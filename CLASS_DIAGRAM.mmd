@@ -1,0 +1,56 @@
+classDiagram
+    class Process {
+        -string id_
+        -int arrivalTime_
+        -int burstTime_
+        -int remainingTime_
+        -int priority_
+        -ProcessState state_
+        +getId() string
+        +getRemainingTime() int
+        +reset()
+    }
+    class SchedulingPolicy {
+        <<abstract>>
+        +getName() string
+        +selectProcess(candidates, processes) int
+        +isPreemptive() bool
+        +timeQuantum() int
+    }
+    class FCFSPolicy
+    class SJFPolicy
+    class SRTFPolicy
+    class PriorityPolicy
+    class RoundRobinPolicy
+    class SchedulingEngine {
+        +run(input, policy) SimulationResult
+    }
+    class SimulationResult {
+        +algorithmName string
+        +timeline vector
+        +processes vector
+        +metrics SimulationMetrics
+    }
+    class ResourceManager {
+        +evaluateSafety() SafetyResult
+        +requestResources(id, request) ResourceRequestResult
+    }
+    class FileManager {
+        +loadWorkload(filename) vector
+        +loadResources(filename) ResourceManager
+        +saveReport(result) path
+    }
+    class ConsoleUI {
+        +run()
+    }
+    SchedulingPolicy <|-- FCFSPolicy
+    SchedulingPolicy <|-- SJFPolicy
+    SchedulingPolicy <|-- SRTFPolicy
+    SchedulingPolicy <|-- PriorityPolicy
+    SchedulingPolicy <|-- RoundRobinPolicy
+    SchedulingEngine --> SchedulingPolicy : uses
+    SchedulingEngine --> Process : simulates
+    SchedulingEngine --> SimulationResult : produces
+    ConsoleUI --> SchedulingEngine
+    ConsoleUI --> FileManager
+    ConsoleUI --> ResourceManager

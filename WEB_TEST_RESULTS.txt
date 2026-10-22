@@ -1,0 +1,15 @@
+KernelSim Web Lab verification
+==============================
+
+JavaScript syntax check: PASS (Node.js v22)
+Scheduling logic harness: PASS
+- FCFS completion times: PASS
+- SJF non-preemptive completion times: PASS
+- SRTF preemption/completion times: PASS
+- Round Robin FIFO rotation and completion times: PASS
+- Idle intervals and CPU utilization: PASS
+Banker's logic harness: PASS
+- Sample safe sequence P1 -> P3 -> P4 -> P0 -> P2: PASS
+- Candidate P0 request [0, 0, 2] leaves state unsafe: PASS
+
+The test harness executes the scheduling and Banker's logic with a lightweight DOM stub. A full graphical browser smoke test could not be completed in this environment; the Chromium headless process did not start/return within the timeout. Static deployment instructions are included in web/README.md.

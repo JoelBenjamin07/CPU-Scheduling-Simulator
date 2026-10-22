@@ -1,0 +1,26 @@
+KernelSim verification record
+=============================
+
+Compiler: GNU g++ 14.2.0
+Language mode: C++17
+Warnings enabled: -Wall -Wextra -Wpedantic
+
+Direct application build: PASS
+Direct test build: PASS
+Automated test functions: 13 passed
+CMake configure: PASS
+CMake build: PASS
+CTest: 1/1 test executable passed
+Interactive smoke test: PASS
+- SRTF run displayed
+- Algorithm comparison displayed
+- Banker's safe sequence displayed
+- Unsafe request for P0 [0, 0, 2] rejected without changing allocation
+- Report export completed
+- Custom workload create/save/load completed in a separate smoke test
+- Normal application exit confirmed
+
+Notes:
+- Verification was performed in a Linux environment with GCC 14.2.0.
+- The Windows MinGW build script is included but was not executed on Windows.
+- An AddressSanitizer run was attempted, but the environment's ASan runtime failed to initialize before tests ran. No sanitizer result is claimed.
